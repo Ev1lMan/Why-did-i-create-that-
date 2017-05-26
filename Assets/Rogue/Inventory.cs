@@ -30,15 +30,26 @@ public class Inventory : MonoBehaviour {
 	void Update(){
 
 
-		if (Input.GetKeyDown (KeyCode.X)) {
+		if (Input.GetKeyDown (KeyCode.X)) { //Тут мы просто меняем руки
 			SwitchHands (ActiveHand);
 			print ("You changed your active hand to " + ActiveHand);
 		}
-		
-		RaycastHit2D rayhit = Physics2D.Raycast (Camera.main.ScreenToWorldPoint (Vector2.zero), Input.mousePosition);
-		if (rayhit.collider != null & Input.GetMouseButtonDown(0)) {
-			if (rayhit.collider.gameObject.CompareTag ("Pickups")) {
-				LHand = rayhit.collider.gameObject;
+
+		// Создаём переменную rayhit, в которой хранится вся информация про объект,
+		//который попал под луч рэйкаста
+		RaycastHit2D rayhit = Physics2D.Raycast (Camera.main.ScreenToWorldPoint (Vector2.zero), Input.mousePosition); 
+		if (rayhit.collider != null & Input.GetMouseButtonDown(0)) { 										//Тут делаем проверку rayhit на присутствие объекта в касте
+			if (Input.GetMouseButtonDown (1)) { //Чисто дэбаг
+				print (rayhit.collider);
+			}
+			if (rayhit.collider.gameObject.CompareTag ("Pickups")) { 										//Все предметы, которые можно поднять будут помечены тэгом "Pickups"
+				if (ActiveHand == "L") { 																	//Проверка выбранной руки. Какую выбрали, такая и будет
+					LHand = rayhit.collider.gameObject;
+				}
+				if (ActiveHand == "R") {
+					RHand = rayhit.collider.gameObject;
+				}
+
 
 				print ("Finally");
 			} else {
