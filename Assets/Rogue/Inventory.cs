@@ -10,7 +10,9 @@ public class Inventory : MonoBehaviour {
 	//Должен ли этот класс наследовать класс игрока? А вообще его бы пихнуть в класс Actor, ибо у всех будет инвентарь, хотя отдельно удобнее.
 	//-----Слоты персонажа
 	public GameObject LHand;
+	public GameObject lHandUI;
 	public GameObject RHand;
+	public GameObject RHandUI;
 	public string ActiveHand;
 	//А как руку переключить?
 	public int SwitchHands(string hand){
@@ -45,6 +47,7 @@ public class Inventory : MonoBehaviour {
 			if (rayhit.collider.gameObject.CompareTag ("Pickups")) { 										//Все предметы, которые можно поднять будут помечены тэгом "Pickups"
 				if (ActiveHand == "L") { 																	//Проверка выбранной руки. Какую выбрали, такая и будет
 					LHand = rayhit.collider.gameObject;
+					//LHand.transform.position.Set(lHandUI.transform.position.x,lHandUI.transform.position.y,lHandUI.transform.position.z); 					//Запихивает пистоль на интерфейс
 				}
 				if (ActiveHand == "R") {
 					RHand = rayhit.collider.gameObject;
