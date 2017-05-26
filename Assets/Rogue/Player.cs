@@ -12,17 +12,21 @@ public class Player : Actor {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey (KeyCode.W)) {
+		if (Input.GetKey (KeyCode.W)) 
+		{
 			Move (2,MoveSpeed);
 		}
-		if (Input.GetKey (KeyCode.A)) {
+		if (Input.GetKey (KeyCode.A)) 
+		{
 			Move (4,MoveSpeed);
 		}
-		if (Input.GetKey (KeyCode.S)) {
+		if (Input.GetKey (KeyCode.S)) 
+		{
 			Move (8, MoveSpeed);
 
 		}
-		if (Input.GetKey (KeyCode.D)) {
+		if (Input.GetKey (KeyCode.D)) 
+		{
 			Move (6,MoveSpeed);
 		}	
 
