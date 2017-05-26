@@ -21,7 +21,7 @@ public class Actor : MonoBehaviour {
 	}
 
 	public int ShowDesc(){
-		print (Description);
+		Debug.Log(Description);
 		return 1;
 	}
 

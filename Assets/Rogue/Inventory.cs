@@ -8,15 +8,19 @@ public class Inventory : MonoBehaviour {
 	//Префабами пользоваться не получится, ибо предмет толжен всегда сохранять свои параметры;
 	//p.s. Иногда мне кажется, что на комментарии я трачу больше сил и времени, чем на кодинг :p
 	//Должен ли этот класс наследовать класс игрока? А вообще его бы пихнуть в класс Actor, ибо у всех будет инвентарь, хотя отдельно удобнее.
-	public GameObject slot0;
+	public GameObject LHand;
+	public GameObject RHand;
 	//private GameObject currentobj;
 
 	void Update(){
+		if (Input.GetKeyDown (KeyCode.R)) {
+			print ("Nah");
+		}
 		
 		RaycastHit2D rayhit = Physics2D.Raycast (Camera.main.ScreenToWorldPoint (Vector2.zero), Input.mousePosition);
 		if (rayhit.collider != null & Input.GetMouseButtonDown(0)) {
-			if (rayhit.collider.gameObject.CompareTag ("Puckups")) {
-				slot0 = rayhit.collider.gameObject;
+			if (rayhit.collider.gameObject.CompareTag ("Pickups")) {
+				LHand = rayhit.collider.gameObject;
 
 				print ("Finally");
 			} else {
