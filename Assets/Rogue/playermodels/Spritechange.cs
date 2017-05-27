@@ -8,17 +8,16 @@ public class Spritechange : MonoBehaviour {
 
 	void Update()  {
 		if (Input.GetKey (KeyCode.W)) {
-			print (gameObject);
-			gameObject.GetComponent<SpriteRenderer> ().sprite = Clown [1];
+			gameObject.GetComponent<SpriteRenderer> ().sprite = Clown [0];
 		}
 		if (Input.GetKey (KeyCode.A)) {
-			//gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("clown_left");
+			gameObject.GetComponent<SpriteRenderer> ().sprite = Clown [3];
 		}
 		if (Input.GetKey (KeyCode.S)) {
-			//gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("clown_down");
+			gameObject.GetComponent<SpriteRenderer> ().sprite = Clown [2];
 		}
 		if (Input.GetKey (KeyCode.D)) {
-			//gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("clown_right");
+			gameObject.GetComponent<SpriteRenderer> ().sprite = Clown [1];
 		}
 	}
 }
