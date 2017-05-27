@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 610992583}
   - component: {fileID: 610992585}
   m_Layer: 0
-  m_Name: HandR
+  m_Name: rHandUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,9 +324,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LHand: {fileID: 0}
-  lHandUI: {fileID: 0}
+  lHandUI: {fileID: 672317316}
   RHand: {fileID: 0}
-  RHandUI: {fileID: 0}
+  rHandUI: {fileID: 610992582}
   ActiveHand: 
 --- !u!114 &650443843
 MonoBehaviour:
@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 672317317}
   - component: {fileID: 672317319}
   m_Layer: 0
-  m_Name: HandL
+  m_Name: lHandUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

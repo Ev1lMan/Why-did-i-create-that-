@@ -12,7 +12,7 @@ public class Inventory : MonoBehaviour {
 	public GameObject LHand;
 	public GameObject lHandUI;
 	public GameObject RHand;
-	public GameObject RHandUI;
+	public GameObject rHandUI;
 	public string ActiveHand;
 	//А как руку переключить?
 	public int SwitchHands(string hand){
@@ -27,6 +27,7 @@ public class Inventory : MonoBehaviour {
 
 	void Start(){
 		ActiveHand = "L";
+		Debug.DrawRay (Camera.main.ScreenToWorldPoint (Vector2.zero), Input.mousePosition);
 	}
 
 	void Update(){
@@ -39,25 +40,30 @@ public class Inventory : MonoBehaviour {
 
 		// Создаём переменную rayhit, в которой хранится вся информация про объект,
 		//который попал под луч рэйкаста
-		RaycastHit2D rayhit = Physics2D.Raycast (Camera.main.ScreenToWorldPoint (Vector2.zero), Input.mousePosition); 
+		RaycastHit2D rayhit = Physics2D.Raycast (Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.forward, Mathf.Infinity); 
 		if (rayhit.collider != null & Input.GetMouseButtonDown(0)) { 										//Тут делаем проверку rayhit на присутствие объекта в касте
-			if (Input.GetMouseButtonDown (1)) { //Чисто дэбаг
-				print (rayhit.collider);
-			}
+			print ("You clicked on " + rayhit.collider.gameObject);
 			if (rayhit.collider.gameObject.CompareTag ("Pickups")) { 										//Все предметы, которые можно поднять будут помечены тэгом "Pickups"
-				if (ActiveHand == "L") { 																	//Проверка выбранной руки. Какую выбрали, такая и будет
+				//Проверка выбранной руки. Какую выбрали, такая и будет
+				if (ActiveHand == "L") { 																	
+					if (LHand = RHand) {RHand = null;}
+
 					LHand = rayhit.collider.gameObject;
-					//LHand.transform.position.Set(lHandUI.transform.position.x,lHandUI.transform.position.y,lHandUI.transform.position.z); 					//Запихивает пистоль на интерфейс
+					rayhit.collider.gameObject.transform.SetPositionAndRotation (lHandUI.transform.position + Vector3.back, Quaternion.identity); 					//Запихивает пистоль на интерфейс 
+					
 				}
 				if (ActiveHand == "R") {
+					if (RHand = LHand) {LHand = null;}
+
 					RHand = rayhit.collider.gameObject;
+					rayhit.collider.gameObject.transform.SetPositionAndRotation (rHandUI.transform.position + Vector3.back, Quaternion.identity);
+
 				}
+
 
 
 				print ("Finally");
-			} else {
-				print ("Nope");
-			}
+			} 
 		}
 
 	}
