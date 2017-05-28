@@ -12,14 +12,14 @@ public class Player : Actor {
 	//Стандартная процедура !!!кладения!!! предмета в руку. Пёс
 	public int ToHands (GameObject _item){
 		if (ActiveHand == "L") {
-			_item.transform.SetPositionAndRotation (Interface.HandLeftUI.transform.position, Quaternion.identity);
+			_item.transform.SetPositionAndRotation (Interface.HandLeftUI.transform.position + Vector3.back, Quaternion.identity);
 			HandLeft = _item;
 			if (HandLeft == HandRight) {
 				HandRight = null;
 			}
 		}
 		if (ActiveHand == "R") {
-			_item.transform.SetPositionAndRotation (Interface.HandRightUI.transform.position, Quaternion.identity);
+			_item.transform.SetPositionAndRotation (Interface.HandRightUI.transform.position + Vector3.back, Quaternion.identity);
 			HandRight = _item;
 			if (HandLeft == HandRight) {
 				HandLeft = null;
