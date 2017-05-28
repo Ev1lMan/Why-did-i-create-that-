@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Player : Actor {
-	public int MoveSpeed = 1;
+	public int MoveSpeed = 3;
 	public int[] Actions = new int[10];
 
 	// Use this for initialization

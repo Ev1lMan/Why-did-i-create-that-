@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-
 public class Inventory : MonoBehaviour {
 	//Идея проста - каждый поднятый предмет хратится в отельной ячейке;
 	//Также, отдельные ячейки будут помещать в себя только отдельно помеченные предметы. Как это сделать - хз, может что-то с as is;
@@ -13,6 +12,8 @@ public class Inventory : MonoBehaviour {
 	public GameObject lHandUI;
 	public GameObject RHand;
 	public GameObject rHandUI;
+	public GameObject Center;
+	public GameObject CenterUI;
 	public Sprite[] HandsSprites = new Sprite[4]; //В таком порядке - Inactive - left[0] : right[1] || Active - left[2] : right[3]
 	public string ActiveHand;
 	//А как руку переключить? !!!НАДО ПЕРЕДЕЛАТЬ!!! Стоило бы сделать аккуратнее
@@ -83,6 +84,15 @@ public class Inventory : MonoBehaviour {
 
 				}
 			} 
-		}				
+			if(rayhit.collider.gameObject.CompareTag("UI")){
+				if (ActiveHand == "R") {
+					Center = RHand;
+					RHand.gameObject.transform.SetPositionAndRotation (CenterUI.transform.position + Vector3.back, Quaternion.identity);
+					RHand = null;
+				}
+
+			}
+
+		}
 	}
 }
