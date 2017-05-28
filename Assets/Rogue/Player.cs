@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Player : Actor {
-	public int MoveSpeed = 3;
+	public int MoveSpeed = 5;
 	public Interface Interface;
 	public Inventory Inventory;
 	public string ActiveHand;
@@ -95,7 +95,7 @@ public class Player : Actor {
 			_handInUse = HandRight;
 		}
 
-
+		// Ну эт пиздец 
 		RaycastHit2D _rayhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.forward, Mathf.Infinity);
 		if (Input.GetMouseButtonDown (0) && _rayhit.collider.gameObject != null) {
 			if(_rayhit.collider.gameObject.CompareTag("Pickups")){
