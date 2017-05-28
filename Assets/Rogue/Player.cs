@@ -30,8 +30,5 @@ public class Player : Actor {
 			Move (6,MoveSpeed);
 		}	
 
-		//RaycastHit2D RayHit = Physics2D.Raycast (Camera.main.ScreenToWorldPoint (Input.mousePosition), Vector2.zero);
-
-
 	}
 }

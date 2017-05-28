@@ -13,24 +13,47 @@ public class Inventory : MonoBehaviour {
 	public GameObject lHandUI;
 	public GameObject RHand;
 	public GameObject rHandUI;
+	public Sprite[] HandsSprites = new Sprite[4]; //В таком порядке - Inactive - left[0] : right[1] || Active - left[2] : right[3]
 	public string ActiveHand;
-	//А как руку переключить?
+	//А как руку переключить? !!!НАДО ПЕРЕДЕЛАТЬ!!! Стоило бы сделать аккуратнее
 	public int SwitchHands(string hand){
 		if (hand == "L") {
 			ActiveHand = "R";
+			rHandUI.GetComponent<SpriteRenderer> ().sprite = HandsSprites [3];
+			lHandUI.GetComponent<SpriteRenderer> ().sprite = HandsSprites [0];
 		}
 		if (hand == "R") {
 			ActiveHand = "L";
+			rHandUI.GetComponent<SpriteRenderer> ().sprite = HandsSprites [1];
+			lHandUI.GetComponent<SpriteRenderer> ().sprite = HandsSprites [2];
+		}
+		return 1;
+	}
+	public int DropDatShit(GameObject _hand){
+		if (_hand != null) {
+			_hand.transform.SetPositionAndRotation (FindObjectOfType<Player> ().transform.position, Quaternion.identity);
+			//_hand = null;
+		} else {
+			print ("You have nothing to drop");
 		}
 		return 1;
 	}
 
 	void Start(){
 		ActiveHand = "L";
-		Debug.DrawRay (Camera.main.ScreenToWorldPoint (Vector2.zero), Input.mousePosition);
+		lHandUI.GetComponent<SpriteRenderer> ().sprite = HandsSprites [2];
 	}
 
 	void Update(){
+		if (Input.GetKeyDown(KeyCode.Q)) {
+			if (ActiveHand == "L") {
+				DropDatShit (LHand);
+				LHand = null;
+			} else {
+				DropDatShit (RHand);
+				RHand = null;
+			}
+		}
 
 
 		if (Input.GetKeyDown (KeyCode.X)) { //Тут мы просто меняем руки
@@ -46,25 +69,20 @@ public class Inventory : MonoBehaviour {
 			if (rayhit.collider.gameObject.CompareTag ("Pickups")) { 										//Все предметы, которые можно поднять будут помечены тэгом "Pickups"
 				//Проверка выбранной руки. Какую выбрали, такая и будет
 				if (ActiveHand == "L") { 																	
-					if (LHand = RHand) {RHand = null;}
+					if (LHand == RHand) {RHand = null;}
 
 					LHand = rayhit.collider.gameObject;
 					rayhit.collider.gameObject.transform.SetPositionAndRotation (lHandUI.transform.position + Vector3.back, Quaternion.identity); 					//Запихивает пистоль на интерфейс 
 					
 				}
 				if (ActiveHand == "R") {
-					if (RHand = LHand) {LHand = null;}
+					if (RHand == LHand) {LHand = null;}
 
 					RHand = rayhit.collider.gameObject;
 					rayhit.collider.gameObject.transform.SetPositionAndRotation (rHandUI.transform.position + Vector3.back, Quaternion.identity);
 
 				}
-
-
-
-				print ("Finally");
 			} 
-		}
-
+		}				
 	}
 }
