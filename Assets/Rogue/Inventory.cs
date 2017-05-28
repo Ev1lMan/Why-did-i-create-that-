@@ -9,15 +9,10 @@ public class Inventory : MonoBehaviour {
 	//Должен ли этот класс наследовать класс игрока? А вообще его бы пихнуть в класс Actor, ибо у всех будет инвентарь, хотя отдельно удобнее.
 	//-----Слоты персонажа
 	public GameObject LHand;
-	public GameObject lHandUI;
 	public GameObject RHand;
-	public GameObject rHandUI;
 	public GameObject Center;
-	public GameObject CenterUI;
-	public Sprite[] HandsSprites = new Sprite[4]; //В таком порядке - Inactive - left[0] : right[1] || Active - left[2] : right[3]
-	public string ActiveHand;
 	//А как руку переключить? !!!НАДО ПЕРЕДЕЛАТЬ!!! Стоило бы сделать аккуратнее
-	public int SwitchHands(string hand){
+	/*public int SwitchHands(string hand){
 		if (hand == "L") {
 			ActiveHand = "R";
 			rHandUI.GetComponent<SpriteRenderer> ().sprite = HandsSprites [3];
@@ -95,4 +90,6 @@ public class Inventory : MonoBehaviour {
 
 		}
 	}
+*/
+
 }
