@@ -330,8 +330,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 57ef63da78b176c44b855375fbffce56, type: 3}
   - {fileID: 21300000, guid: c72169b0b79a2254889e711aa01df0d5, type: 3}
   Clown:
-  - {fileID: 21300000, guid: d214b1eeb0fd36649bfbca93b7b39272, type: 3}
-  - {fileID: 21300000, guid: c2181fde06fc11341849faf0bcb44816, type: 3}
-  - {fileID: 21300000, guid: c6c26d88bdfcbb741a20d4f160eea872, type: 3}
   - {fileID: 21300000, guid: d779eaa4f7d453a42a48ab90c3e8fe15, type: 3}
+  - {fileID: 21300000, guid: c2181fde06fc11341849faf0bcb44816, type: 3}
+  - {fileID: 21300000, guid: d214b1eeb0fd36649bfbca93b7b39272, type: 3}
+  - {fileID: 21300000, guid: c6c26d88bdfcbb741a20d4f160eea872, type: 3}
   MenuMan: {fileID: 284256392}

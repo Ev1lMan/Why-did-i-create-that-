@@ -35,13 +35,13 @@ public class Spritechange : MonoBehaviour {
 				gameObject.GetComponent<SpriteRenderer> ().sprite = Current [0];
 		}
 		if (Input.GetKey (KeyCode.A)) {
-				gameObject.GetComponent<SpriteRenderer> ().sprite = Current [3];
+				gameObject.GetComponent<SpriteRenderer> ().sprite = Current [1];
 		}
 		if (Input.GetKey (KeyCode.S)) {
 				gameObject.GetComponent<SpriteRenderer> ().sprite = Current [2];
 		}
 		if (Input.GetKey (KeyCode.D)) {
-				gameObject.GetComponent<SpriteRenderer> ().sprite = Current [1];
+				gameObject.GetComponent<SpriteRenderer> ().sprite = Current [3];
 		}
 	}
 }
