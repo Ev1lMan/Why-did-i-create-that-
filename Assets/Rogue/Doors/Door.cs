@@ -16,7 +16,7 @@ public class Door : MonoBehaviour {
 	public bool toClose;
 	private float _time;
 	private int _curr;
-	private BoxCollider2D DoorColl; //Коллайдер двери, иначе не пройдёшь, но если убрать коллайдер, то нельзя будет кликнуть;
+	public BoxCollider2D[] DoorColl = new BoxCollider2D[3]; //Коллайдер двери, иначе не пройдёшь, но если убрать коллайдер, то нельзя будет кликнуть;
 	public bool OnClick(){
 		if (IsOpen) {
 			toClose = true;
@@ -53,8 +53,7 @@ public class Door : MonoBehaviour {
 		
 	// Use this for initialization
 	void Start () {
-		DoorColl = this.GetComponent<BoxCollider2D> ();
-		DoorColl.enabled = true;
+		DoorColl = this.GetComponents<BoxCollider2D> ();
 		_time = 0;
 		_curr = 3;
 		toOpen = false;
@@ -62,8 +61,15 @@ public class Door : MonoBehaviour {
 		toClose = false;
 		if (IsOpen) {
 			_currentSprite = DoorSq [9];
+			DoorColl [0].enabled = false;
+			DoorColl [1].enabled = true;
+			DoorColl [2].enabled = true;
 		}else{
 			_currentSprite = DoorSq [0];
+			DoorColl [0].enabled = true;
+			DoorColl [1].enabled = false;
+			DoorColl [2].enabled = false;
+
 		}
 		this.GetComponent<SpriteRenderer> ().sprite = _currentSprite;
 	}
@@ -88,14 +94,16 @@ public class Door : MonoBehaviour {
 				IsOpen = true;
 				_curr = 9;
 				_time = 0;
-				DoorColl.enabled = false;
+				DoorColl [0].enabled = false;
+				DoorColl [1].enabled = true;
+				DoorColl [2].enabled = true;
 			}
 		}
 		//--------Закрытие двери---------//
 		if (toClose && IsOpen) {
 			_time += Time.deltaTime;
 			this.GetComponent<SpriteRenderer> ().sprite = DoorSq [_curr];
-			if (_time >= 0.2f) {
+			if (_time >= 0.1f) {
 				_curr -= 1;
 				_time = 0;
 			}
@@ -104,7 +112,9 @@ public class Door : MonoBehaviour {
 				IsOpen = false;
 				_curr = 3;
 				_time = 0;
-				DoorColl.enabled = true;
+				DoorColl [0].enabled = true;
+				DoorColl [1].enabled = false;
+				DoorColl [2].enabled = false;
 			}
 
 		}
