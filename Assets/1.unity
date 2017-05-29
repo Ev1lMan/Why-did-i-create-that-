@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 2436117}
   - component: {fileID: 2436116}
   - component: {fileID: 2436119}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: door1 (1)
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -152,6 +152,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: df9675b757c4c494b8e79b1d7fadecfe, type: 3}
   - {fileID: 21300000, guid: 7a46ceb5c3b82d14990c6490a3c0b955, type: 3}
   - {fileID: 21300000, guid: 1663eada835b3b343a804e386e6fd65a, type: 3}
+  toClose: 0
 --- !u!212 &2436117
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -633,7 +634,7 @@ GameObject:
   - component: {fileID: 579822145}
   - component: {fileID: 579822147}
   - component: {fileID: 579822148}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: door1
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -719,6 +720,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: df9675b757c4c494b8e79b1d7fadecfe, type: 3}
   - {fileID: 21300000, guid: 7a46ceb5c3b82d14990c6490a3c0b955, type: 3}
   - {fileID: 21300000, guid: 1663eada835b3b343a804e386e6fd65a, type: 3}
+  toClose: 0
 --- !u!61 &579822148
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -922,6 +924,7 @@ GameObject:
   - component: {fileID: 650443848}
   - component: {fileID: 650443846}
   - component: {fileID: 650443847}
+  - component: {fileID: 650443849}
   m_Layer: 0
   m_Name: Human
   m_TagString: Player
@@ -1075,6 +1078,26 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2aefbfcbc36cd3945ab4ffcd7c124985, type: 3}
   - {fileID: 21300000, guid: 34a2abb0f73e7f4448044c175ee34ead, type: 3}
   Player: {fileID: 0}
+--- !u!50 &650443849
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650443841}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 5
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &672317316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1858,7 +1881,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.046550274, y: 0.07448098}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1869,7 +1892,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.68345785, y: 0.5903568}
   m_EdgeRadius: 0
 --- !u!114 &1874525802
 MonoBehaviour:
