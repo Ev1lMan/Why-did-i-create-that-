@@ -114,6 +114,11 @@ public class Player : Actor {
 					print ("No way");
 				}	
 			}
+			if (_rayhit.collider.gameObject.CompareTag ("Door")) {
+				print ("Door");
+				_rayhit.collider.SendMessage ("OpenDoor",true);
+
+			}
 		} 
 	}
 }
