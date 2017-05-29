@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Spritechange : MonoBehaviour {
-/*
+
+
+	public Sprite[] Humanm= new Sprite[4]; 
 	public Sprite[] Clown= new Sprite[4]; 
+	public Menu Menu;
 
 	void Update()  {
+		DontDestroyOnLoad (transform.gameObject);
+
+		if(Menu.n ==1){
 
 		if (Input.GetKey (KeyCode.W)) {
 			gameObject.GetComponent<SpriteRenderer> ().sprite = Clown [0];
@@ -21,10 +27,9 @@ public class Spritechange : MonoBehaviour {
 			gameObject.GetComponent<SpriteRenderer> ().sprite = Clown [1];
 		}
 	}
-*/
-	public Sprite[] Humanm= new Sprite[4]; 
-
-	void Update()  {
+		
+		if(Menu.n ==2){
+			
 		if (Input.GetKey (KeyCode.W)) {
 			gameObject.GetComponent<SpriteRenderer> ().sprite = Humanm [0];
 		}
@@ -37,6 +42,9 @@ public class Spritechange : MonoBehaviour {
 		if (Input.GetKey (KeyCode.D)) {
 			gameObject.GetComponent<SpriteRenderer> ().sprite = Humanm [3];
 		}
+
 	}
 }
+}
+
 
