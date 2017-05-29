@@ -22,6 +22,7 @@ public class Spritechange : MonoBehaviour {
 			Skin = MenuObj.GetComponent<MenuManager> ().Skin; //Чисто дебаг, можно под снос
 			Current = MenuObj.GetComponent<MenuManager> ().CurrentSkin; //Применяем к массиву данные из массива перенесённого объекта, просто так менее затратнее, да и тот оъект можно будет удалить;
 			print (Skin); //Чисто дэбаг, можно удалять
+			Destroy(MenuObj);
 		} else {
 			Current = DebugSprite; //Ну а тут если не нашли
 		}
