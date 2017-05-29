@@ -100,11 +100,12 @@ public class Player : Actor {
 			_handInUse = HandRight;
 		}
 
-		// Ну эт пиздец
-		//Тут, видимо, будет происходить (а наверное уже происходит) обработка кликом и выборка метода
-		//Блять, в юнити не самый скудный инструментарий, а всё вот так происходит, видимо из-за моего слабоумия (D) P.s. После армии я вообще перестану соображать :(
-		//Загляни в интерфейс, это тот ещё пиздец
-
+// Ну эт пиздец
+//Тут, видимо, будет происходить (а наверное уже происходит) обработка кликом и выборка метода
+//Блять, в юнити не самый скудный инструментарий, а всё вот так происходит, видимо из-за моего слабоумия (D) P.s. После армии я вообще перестану соображать :(
+//Загляни в интерфейс, это тот ещё пиздец
+//У всех объектов, которые могут быть использованны, будет функция OnClick(). Наверное так будет удобно(если нет, предложи свой вариант). Через эту функцию будет реализовыватся алгоритм работы этого объекта
+//Фунция вызывается через SendMessage("имя функции - OnClick()")
 		RaycastHit2D _rayhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.forward, Mathf.Infinity);
 		if (Input.GetMouseButtonDown (0) && _rayhit.collider != null) {
 			if (_rayhit.collider.gameObject.CompareTag ("Pickups")) {
@@ -116,7 +117,7 @@ public class Player : Actor {
 			}
 			if (_rayhit.collider.gameObject.CompareTag ("Door")) {
 				print ("Door");
-				_rayhit.collider.SendMessage ("OpenDoor",true);
+				_rayhit.collider.SendMessage ("OnClick");
 
 			}
 		} 

@@ -13,16 +13,18 @@ public class Door : MonoBehaviour {
 	public int OpenSpeed; //Ну тут кароч кадров в секунду ...................
 	public Sprite[] DoorSq = new Sprite[10]; //Удобства не завезли
 	private Sprite _currentSprite;
+	public bool toClose;
 	private float _time;
 	private int _curr;
-	public bool OpenDoor(bool _wat){
-		if (_wat) {
-			toOpen = true;
-			return true;
-		} else {
-			return false;
+	public bool OnClick(){
+		if (IsOpen) {
+			toClose = true;
 			toOpen = false;
+		} else {
+			toClose = false;
+			toOpen = true;
 		}
+		return true;
 	}
 /*	IEnumerator OpenProc(){
 		print ("haha");
@@ -50,10 +52,12 @@ public class Door : MonoBehaviour {
 		
 	// Use this for initialization
 	void Start () {
-		OpenDoor (false);
+		
 		_time = 0;
 		_curr = 3;
 		toOpen = false;
+		IsOpen = false;
+		toClose = false;
 		if (IsOpen) {
 			_currentSprite = DoorSq [9];
 		}else{
@@ -69,9 +73,8 @@ public class Door : MonoBehaviour {
 		//float _time;
 		//int _curr;
 		//ЛУЧШЕ НЕ СМОТРЕТЬ СЮДА, ЭТО ПРОСТО ЕБАНЫЙ ПОЗОР БЛЯТЬ! А ЧТО Я МОГУ СДЕЛАТЬ? Я БЛЯТЬ НЕ МОГУ С КОРУТИНАМИ РАЗОБРАТЬСЯ, ХОТЬ БЛЯТЬ ОТДЕЛЬНЫЙ ПОТОК ЗАПУСКАЙ СУКА
-		if(toOpen){
+		if(toOpen && !IsOpen){
 			_time += Time.deltaTime;
-			//_curr = 3;
 			this.GetComponent<SpriteRenderer> ().sprite = DoorSq[_curr];
 			if (_time >= 0.2f) {
 				_curr += 1;
@@ -80,13 +83,23 @@ public class Door : MonoBehaviour {
 			if (_curr >= 9) {
 				toOpen = false;
 				IsOpen = true;
+				_curr = 9;
+				_time = 0;
 			}
-
-
-
-
-
-
+		}
+		if (toClose && IsOpen) {
+			_time += Time.deltaTime;
+			this.GetComponent<SpriteRenderer> ().sprite = DoorSq [_curr];
+			if (_time >= 0.2f) {
+				_curr -= 1;
+				_time = 0;
+			}
+			if (_curr <= -1) {
+				toClose = false;
+				IsOpen = false;
+				_curr = 3;
+				_time = 0;
+			}
 
 		}
 	}
