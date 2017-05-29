@@ -108,6 +108,52 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &284256391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 284256393}
+  - component: {fileID: 284256392}
+  m_Layer: 0
+  m_Name: MenuManager
+  m_TagString: EditorOnly
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &284256392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 284256391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdee0ade44550564dad824538a90ff1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skin: 0
+  CurrentSkin:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!4 &284256393
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 284256391}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.4550312, y: 1.0117723, z: -0.49023438}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &807906132
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,3 +324,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da21b4021f67164aba01c15455c9a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Humanm:
+  - {fileID: 21300000, guid: 4d06f457095b56948afd91b77495b1f3, type: 3}
+  - {fileID: 21300000, guid: aa905c4005449b3409076749537a369c, type: 3}
+  - {fileID: 21300000, guid: 57ef63da78b176c44b855375fbffce56, type: 3}
+  - {fileID: 21300000, guid: c72169b0b79a2254889e711aa01df0d5, type: 3}
+  Clown:
+  - {fileID: 21300000, guid: d214b1eeb0fd36649bfbca93b7b39272, type: 3}
+  - {fileID: 21300000, guid: c2181fde06fc11341849faf0bcb44816, type: 3}
+  - {fileID: 21300000, guid: c6c26d88bdfcbb741a20d4f160eea872, type: 3}
+  - {fileID: 21300000, guid: d779eaa4f7d453a42a48ab90c3e8fe15, type: 3}
+  MenuMan: {fileID: 284256392}

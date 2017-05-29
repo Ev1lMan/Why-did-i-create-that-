@@ -9,7 +9,7 @@ public class Apc : InteractiveObj {
 
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.G)){
-			Door.toOpen = true;
+			Door.SendMessage ("OnClick");
 		}
 	}
 }

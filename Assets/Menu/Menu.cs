@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 // Меню кароч, его пиздец можно улучшить, кастомные буттоны позже замучу
 public class Menu : MonoBehaviour {
-
+	//Сюда загружаются спрайты. Лучше будет вынести в отдельный файл с удобной структурой, там же можно и с файловой системой попробовать взаимодействие
 	public Sprite[] Humanm= new Sprite[4];
 	public Sprite[] Clown= new Sprite[4]; 
 	bool isShowMenu,isShowMenuOptions,isShowMenuChoise;
-	public int n = 0;
+	public MenuManager MenuMan; //Отельный скрипт, который будет переносить данные в игровую сцену
 
 	void Start () {
+		MenuMan.Skin = 0;
 		isShowMenu = true;
 		isShowMenuOptions = false;
 		isShowMenuChoise = false;
@@ -40,10 +41,12 @@ public class Menu : MonoBehaviour {
 				GUILayout.BeginVertical();
 			if (GUILayout.Button ("Выбрать клоуна", GUILayout.Height (50))) {
 
-				n = 1;
+				MenuMan.Skin = 1;
+				MenuMan.CurrentSkin = Clown; //В том скрипте есть массив, который позже применяется к игроку
 				
 			} else if (GUILayout.Button ("Выбрать Человека", GUILayout.Height (50))) {
-				n = 2;
+				MenuMan.Skin = 2;
+				MenuMan.CurrentSkin = Humanm;
 			}
 
 			if(GUILayout.Button("Начать игру",GUILayout.Height (50)))
