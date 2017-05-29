@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Pickups
   - UI
+  - Usable
+  - Door
   layers:
   - Default
   - TransparentFX

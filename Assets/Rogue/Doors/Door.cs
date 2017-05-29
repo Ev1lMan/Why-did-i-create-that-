@@ -15,6 +15,15 @@ public class Door : MonoBehaviour {
 	private Sprite _currentSprite;
 	private float _time;
 	private int _curr;
+	public bool OpenDoor(bool _wat){
+		if (_wat) {
+			toOpen = true;
+			return true;
+		} else {
+			return false;
+			toOpen = false;
+		}
+	}
 /*	IEnumerator OpenProc(){
 		print ("haha");
 		bool _done = false;
@@ -41,9 +50,9 @@ public class Door : MonoBehaviour {
 		
 	// Use this for initialization
 	void Start () {
+		OpenDoor (false);
 		_time = 0;
 		_curr = 3;
-		
 		toOpen = false;
 		if (IsOpen) {
 			_currentSprite = DoorSq [9];
@@ -54,17 +63,13 @@ public class Door : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown (KeyCode.R)) {
-			//StartCoroutine ("OpenProc");
-			toOpen = true;
-		}
+	void Update (){
 		//ГОООООСПАААДЕЕЕЕ, КАКАЯ УБОГАЯ РЕАЛИЦАЗИЦАЯ, ПОЖАЛУЙСТА, ПЕРЕПИШИТЕ ЭТО КТО-НИБУДЬ В НОРМАЛЬНУЮ ФОРМУ, ЧТОБ ЭТО БЫЛА ФУНКЦИЯ, А НЕ ХУЙНЯ БЛЯТЬ
 		//bool _done;
 		//float _time;
 		//int _curr;
 		//ЛУЧШЕ НЕ СМОТРЕТЬ СЮДА, ЭТО ПРОСТО ЕБАНЫЙ ПОЗОР БЛЯТЬ! А ЧТО Я МОГУ СДЕЛАТЬ? Я БЛЯТЬ НЕ МОГУ С КОРУТИНАМИ РАЗОБРАТЬСЯ, ХОТЬ БЛЯТЬ ОТДЕЛЬНЫЙ ПОТОК ЗАПУСКАЙ СУКА
-		if(toOpen == true){
+		if(toOpen){
 			_time += Time.deltaTime;
 			//_curr = 3;
 			this.GetComponent<SpriteRenderer> ().sprite = DoorSq[_curr];
