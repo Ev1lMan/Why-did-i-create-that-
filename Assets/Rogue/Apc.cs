@@ -2,21 +2,15 @@
 using System.Collections;
 
 public class Apc : InteractiveObj {
-	public GameObject Lamp;
-	// Use this for initialization
-	void Start () {
-		Description = "This is what it is, Area power control1l d:";
-	}
+	public Door Door;
+	//Вообще это просто для теста, так что на эту вещь можно забить
 	
-	// Update is called once per frame
+
+
 	void Update () {
-		if (Enabled) {
-			Lamp.SetActive (true);
-		} else {
-			Lamp.SetActive (false);
+		if(Input.GetKeyDown(KeyCode.G)){
+			Door.toOpen = true;
 		}
-	
 	}
 }
-
 

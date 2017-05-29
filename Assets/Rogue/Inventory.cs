@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour {
 	public GameObject LHand;
 	public GameObject RHand;
 	public GameObject Center;
+	//-----------------------ПОД УДАЛЕНИЕ-----------------//
 	//А как руку переключить? !!!НАДО ПЕРЕДЕЛАТЬ!!! Стоило бы сделать аккуратнее
 	/*public int SwitchHands(string hand){
 		if (hand == "L") {

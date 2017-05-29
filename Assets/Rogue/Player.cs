@@ -10,10 +10,12 @@ public class Player : Actor {
 	public GameObject HandRight;
 	private GameObject _handInUse;
 	//Стандартная процедура !!!кладения!!! предмета в руку. Пёс
+	//Мне кажется, или стоит переписать этот бред с текстовой переменной для активной руки. Заменить её на геймобджект, наверное. Где-то внизу уже применянется данный способ. Надо будет попробовать
 	public int ToHands (GameObject _item){
 		if (ActiveHand == "L") {
 			_item.transform.SetPositionAndRotation (Interface.HandLeftUI.transform.position + Vector3.back, Quaternion.identity);
 			HandLeft = _item;
+			_item.gameObject.transform.SetParent (Interface.HandLeftUI.transform); //Чтоб объект двигался вместе с UI
 			if (HandLeft == HandRight) {
 				HandRight = null;
 			}
@@ -21,8 +23,10 @@ public class Player : Actor {
 		if (ActiveHand == "R") {
 			_item.transform.SetPositionAndRotation (Interface.HandRightUI.transform.position + Vector3.back, Quaternion.identity);
 			HandRight = _item;
+			_item.gameObject.transform.SetParent (Interface.HandRightUI.transform);//UI
 			if (HandLeft == HandRight) {
 				HandLeft = null;
+
 			}
 		}
 			return 1;
@@ -41,6 +45,7 @@ public class Player : Actor {
 			print ("You have nothing to drop");
 		} else {
 			_hand.transform.SetPositionAndRotation (this.transform.position, Quaternion.identity);
+			_hand.transform.parent = null; //Очищаем парент
 		}
 		return 1;
 	}
@@ -95,19 +100,20 @@ public class Player : Actor {
 			_handInUse = HandRight;
 		}
 
-		// Ну эт пиздец 
+		// Ну эт пиздец
+		//Тут, видимо, будет происходить (а наверное уже происходит) обработка кликом и выборка метода
+		//Блять, в юнити не самый скудный инструментарий, а всё вот так происходит, видимо из-за моего слабоумия (D) P.s. После армии я вообще перестану соображать :(
+		//Загляни в интерфейс, это тот ещё пиздец
+
 		RaycastHit2D _rayhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.forward, Mathf.Infinity);
-		if (Input.GetMouseButtonDown (0) && _rayhit.collider.gameObject != null) {
-			if(_rayhit.collider.gameObject.CompareTag("Pickups")){
+		if (Input.GetMouseButtonDown (0) && _rayhit.collider != null) {
+			if (_rayhit.collider.gameObject.CompareTag ("Pickups")) {
 				if (_handInUse == null) {
 					ToHands (_rayhit.collider.gameObject);
 				} else {
 					print ("No way");
-				}
-				
+				}	
 			}
-			
-
-		}
+		} 
 	}
 }

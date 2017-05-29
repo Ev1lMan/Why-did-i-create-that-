@@ -6,10 +6,11 @@ using UnityEngine;
 //БЛЯТЬ, АААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА ЯЯЯЯЯ ХООЧУ КРАСИИИВООО ЕБОШИТЬ, НЕ ХОЧУ ЗАПИХИВАТЬ В КЛАВНЫЙ ЦЫЫЫЫКЛЛЛ СУУУКИИИИ
 //Новая технология поъехала - корутина, но я как-то не оч. СУКА ЗАЕБАЛСЯ Я
 public class Door : MonoBehaviour {
+	//Разобраться с этим месивом
 	public GameObject DoorConsole; //Не важно блять
 	public bool IsOpen;
 	public bool toOpen;
-	public int OpenSpeed; //Ну тут кароч кадыров в секунду ...................
+	public int OpenSpeed; //Ну тут кароч кадров в секунду ...................
 	public Sprite[] DoorSq = new Sprite[10]; //Удобства не завезли
 	private Sprite _currentSprite;
 	private float _time;
@@ -62,16 +63,16 @@ public class Door : MonoBehaviour {
 		//bool _done;
 		//float _time;
 		//int _curr;
-		//ЛУЧШЕ НЕ СМОТРЕТЬ СЮДА, ЭТО ПРОСТО ЕБАНЫЙ ПОЗОР БЛЯТЬ! А ЧТО Я МОГУ СДЕЛАТЬ? Я БЛЯТЬ НЕ МОГУ С КОРУТИНАМИ РАЗОБРАТЬСЯ, ХОТЬ БЛЯТЬ ОТДЕЛЬНЫЙ ПОТОМ ЗАПУСКАЙ СУКА
+		//ЛУЧШЕ НЕ СМОТРЕТЬ СЮДА, ЭТО ПРОСТО ЕБАНЫЙ ПОЗОР БЛЯТЬ! А ЧТО Я МОГУ СДЕЛАТЬ? Я БЛЯТЬ НЕ МОГУ С КОРУТИНАМИ РАЗОБРАТЬСЯ, ХОТЬ БЛЯТЬ ОТДЕЛЬНЫЙ ПОТОК ЗАПУСКАЙ СУКА
 		if(toOpen == true){
 			_time += Time.deltaTime;
 			//_curr = 3;
 			this.GetComponent<SpriteRenderer> ().sprite = DoorSq[_curr];
-			if (_time >= 0.5f) {
+			if (_time >= 0.2f) {
 				_curr += 1;
 				_time = 0;
 			}
-			if (_curr >= 8) {
+			if (_curr >= 9) {
 				toOpen = false;
 				IsOpen = true;
 			}

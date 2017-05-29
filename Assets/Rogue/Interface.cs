@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Interface : MonoBehaviour {
 	//Класс интерфейса. Отвечает за отображение иконок слотов снаряжения
-	//Я хз чо делать
+	//БЛЯТЬ, ЮНИТИ ДАЁТ НОРМАЛЬНЫЙ GUI, С ОБРАБОТЧИКОМ СОБЫТИЙ И ПРОЧЕЙ ХУЕТОЙ, НЕТ БЛЯТЬ, НЕ ХОЧУ, ХОЧУ ГАВНО ЖРАТЬ
+	//Хотя мне так удобнее, либо просто так легче, либо я не разобрался с нормальный GUI, либо, что кстати вытекает из предыдущего пункта, моё слабоумие (D)
 	public GameObject HandLeftUI;
 	public GameObject HandRightUI;
 	public Sprite[] HandsIcons = new Sprite[4]; //Inactive: left[0] right[1] || Active: left[2] right[3]
