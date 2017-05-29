@@ -7,6 +7,7 @@ using UnityEngine;
 //Новая технология поъехала - корутина, но я как-то не оч. СУКА ЗАЕБАЛСЯ Я
 public class Door : MonoBehaviour {
 	//Разобраться с этим месивом
+	public AudioClip OpenSound;// Хуйня со звуком
 	public GameObject DoorConsole; //Не важно блять
 	public bool IsOpen;
 	public bool toOpen;
@@ -17,7 +18,9 @@ public class Door : MonoBehaviour {
 	private float _time;
 	private int _curr;
 	public BoxCollider2D[] DoorColl = new BoxCollider2D[3]; //Коллайдер двери, иначе не пройдёшь, но если убрать коллайдер, то нельзя будет кликнуть;
-	public bool OnClick(){
+	public bool OnClick()
+	{
+		GetComponent<AudioSource>().PlayOneShot (OpenSound); // для проигрования хурмы(звука)
 		if (IsOpen) {
 			toClose = true;
 			toOpen = false;
@@ -103,7 +106,7 @@ public class Door : MonoBehaviour {
 		if (toClose && IsOpen) {
 			_time += Time.deltaTime;
 			this.GetComponent<SpriteRenderer> ().sprite = DoorSq [_curr];
-			if (_time >= 0.1f) {
+			if (_time >= 0.2f) {
 				_curr -= 1;
 				_time = 0;
 			}
