@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 // Меню кароч, его пиздец можно улучшить, кастомные буттоны позже замучу
 public class Menu : MonoBehaviour {
 
+	public Sprite[] Humanm= new Sprite[4];
+	public Sprite[] Clown= new Sprite[4]; 
 	bool isShowMenu,isShowMenuOptions,isShowMenuChoise;
 
 	void Start () {
 		isShowMenu = true;
 		isShowMenuOptions = false;
 		isShowMenuChoise = false;
-	}
-	void Update () {
 	}
 	void OnGUI() {
 		if (isShowMenu) {
@@ -36,9 +37,15 @@ public class Menu : MonoBehaviour {
 			{
 				GUILayout.BeginArea(new Rect(Screen.width/2-50,Screen.height/2-50,200,200));
 				GUILayout.BeginVertical();
+			if (GUILayout.Button ("Выбрать клоуна", GUILayout.Height (50))) {
+				
+			} else if (GUILayout.Button ("Выбрать Человека", GUILayout.Height (50))) {
+				
+			}
+
 			if(GUILayout.Button("Начать игру",GUILayout.Height (50)))
 				{
-					Application.LoadLevel(1);
+					SceneManager.LoadScene(1);
 				}
 
 			}

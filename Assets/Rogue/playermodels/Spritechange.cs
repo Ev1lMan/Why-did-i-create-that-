@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Spritechange : MonoBehaviour {
-
-	/*
+/*
 	public Sprite[] Clown= new Sprite[4]; 
 
 	void Update()  {
+
 		if (Input.GetKey (KeyCode.W)) {
 			gameObject.GetComponent<SpriteRenderer> ().sprite = Clown [0];
 		}
@@ -39,3 +39,4 @@ public class Spritechange : MonoBehaviour {
 		}
 	}
 }
+
