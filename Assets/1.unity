@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 2436118}
   - component: {fileID: 2436117}
   - component: {fileID: 2436116}
+  - component: {fileID: 2436119}
   m_Layer: 0
   m_Name: door1 (1)
   m_TagString: Door
@@ -204,6 +205,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2436119
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2436115}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &164085315
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,6 +632,7 @@ GameObject:
   - component: {fileID: 579822146}
   - component: {fileID: 579822145}
   - component: {fileID: 579822147}
+  - component: {fileID: 579822148}
   m_Layer: 0
   m_Name: door1
   m_TagString: Door
@@ -692,6 +719,31 @@ MonoBehaviour:
   - {fileID: 21300000, guid: df9675b757c4c494b8e79b1d7fadecfe, type: 3}
   - {fileID: 21300000, guid: 7a46ceb5c3b82d14990c6490a3c0b955, type: 3}
   - {fileID: 21300000, guid: 1663eada835b3b343a804e386e6fd65a, type: 3}
+--- !u!61 &579822148
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 579822144}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &610992582
 GameObject:
   m_ObjectHideFlags: 0
