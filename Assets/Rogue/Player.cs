@@ -8,7 +8,7 @@ public class Player : Actor {
 	public string ActiveHand;
 	public GameObject HandLeft;
 	public GameObject HandRight;
-	private GameObject _handInUse;
+	public GameObject _handInUse;
 	//Стандартная процедура !!!кладения!!! предмета в руку. Пёс
 	//Мне кажется, или стоит переписать этот бред с текстовой переменной для активной руки. Заменить её на геймобджект, наверное. Где-то внизу уже применянется данный способ. Надо будет попробовать
 	public int ToHands (GameObject _item){
@@ -32,8 +32,17 @@ public class Player : Actor {
 			return 1;
 	}
 	//DROP DAT SHIIT ON DA FLOOR YEAH
-	public int DropFromHands(){
-		GameObject _hand;
+	public int DropFromHands(string _hand){
+		if (_handInUse != null) {
+			_handInUse.transform.SetPositionAndRotation (this.transform.position, Quaternion.identity);
+			_handInUse.transform.parent = null;
+			ClearHand (_hand);
+		} else {
+			print ("You have nothing to drop");
+		}
+		return 1;
+
+		/*GameObject _hand; -----ПОД УДАЛЕНИЕ ---------
 		if (ActiveHand == "L") {
 			_hand = HandLeft;
 			HandLeft = null;
@@ -46,8 +55,8 @@ public class Player : Actor {
 		} else {
 			_hand.transform.SetPositionAndRotation (this.transform.position, Quaternion.identity);
 			_hand.transform.parent = null; //Очищаем парент
-		}
-		return 1;
+		}*/
+
 	}
 	//Как руки-то переключить? ГДЕ КНОООПКАААААААААА????????
 	public int SwitchHands(string hand){
@@ -56,6 +65,16 @@ public class Player : Actor {
 		}
 		if (hand == "R") {
 			ActiveHand = "L";
+		}
+		return 1;
+	}
+	//Очистка референсов в слотах рук. Так-то можно соеденить с DropFromHands, только учесть то, что эта функция нужна будет в чистом виде :) 
+	public int ClearHand(string _hand){
+		_handInUse = null;
+		if (_hand == "L") {
+			HandLeft = null;
+		} else {
+			HandRight = null;
 		}
 		return 1;
 	}
@@ -91,7 +110,7 @@ public class Player : Actor {
 			SwitchHands (ActiveHand);
 		}
 		if (Input.GetKeyDown (KeyCode.Q)) {
-			DropFromHands ();
+			DropFromHands (ActiveHand);
 		}
 		//Это пиздец некрасива. Или красива. Если некрасива - нада переделать. Если красива - нада использовать кое-где... где?
 		if (ActiveHand == "L") {
@@ -108,13 +127,32 @@ public class Player : Actor {
 //Фунция вызывается через SendMessage("имя функции - OnClick()")
 		RaycastHit2D _rayhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.forward, Mathf.Infinity);
 		if (Input.GetMouseButtonDown (0) && _rayhit.collider != null) {
-			if (_rayhit.collider.gameObject.CompareTag ("Pickups")) {
-				if (_handInUse == null) {
-					ToHands (_rayhit.collider.gameObject);
-				} else {
-					print ("No way");
-				}	
+			//Проверяем есть ли что-нибудь в руке. Если нет, то преносим персонажу
+			if (_handInUse == null) {
+				if (_rayhit.collider.gameObject.CompareTag ("Pickups")) {
+					if (_handInUse == null) {
+						ToHands (_rayhit.collider.gameObject);
+					} else {
+						print ("No way");
+					}	
+				}
+			} else {
+				//А тут если в руке что-то есть
+				//Тут будет отправка данных о персонаже? и предмете, который был в руке. Дальше это будет обрабатываться предметом. Например: если использовать отвёртку на двери, то откручивается крышечка обслуживания
+				print(_rayhit.collider + " " +_handInUse);
+				/*if (_rayhit.collider.gameObject.CompareTag("Player")) {
+					print ("You clicked on yourself with " + _handInUse);
+
+				}*/
+				//Обработка инвентаря. Если кликаем на интерфейс инвентаря, то отправляем всё на обработку в класс инвентаря
+				if (_rayhit.collider.gameObject.CompareTag("UI")) {
+					Inventory.toInventory (_handInUse, _rayhit.collider.gameObject);
+				} 
 			}
+				
+
+
+
 			if (_rayhit.collider.gameObject.CompareTag ("Door")) {
 				print ("Door");
 				_rayhit.collider.SendMessage ("OnClick");

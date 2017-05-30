@@ -13,9 +13,18 @@ public class Spritechange : MonoBehaviour {
 	public GameObject MenuObj;
 	public int Skin; //Чисто дебаг, можно удалять
 	//public Sprite[] Curr = new Sprite[4];
+
+	//!!! Работа над спрайтами, которые рисуются над персонажем - маски!!!
+	//! Для каждой маски приходится создавать новый игровой объект, ибо несклько SpriteRenderer'ов нельзя навесить на один объект !
+	//Работа с поясом. У каждого пояса свои спрайты по направлениям. 
+	public SpriteRenderer BeltRend;
+	public Sprite[] BeltSprites = new Sprite[4];
+
+
+
+
 	void Start(){
 		//Область инициализации и загрузки
-
 		MenuObj = GameObject.FindGameObjectWithTag ("EditorOnly"); //Находим наш переносимый объект, на котором наш скрипт;
 		//Если находим переносимый объект, то применяем
 		if (MenuObj != null) { 
@@ -26,22 +35,27 @@ public class Spritechange : MonoBehaviour {
 		} else {
 			Current = DebugSprite; //Ну а тут если не нашли
 		}
+		BeltRend = this.transform.Find ("BeltLayer").GetComponent<SpriteRenderer> (); //Находим объект, на котором висит SpriteRenderer для пояса
 	}
 
 	void Update()  {
 		//DontDestroyOnLoad (transform.gameObject);
 
 		if (Input.GetKey (KeyCode.W)) {
-				gameObject.GetComponent<SpriteRenderer> ().sprite = Current [0];
+			gameObject.GetComponent<SpriteRenderer> ().sprite = Current [0];
+			BeltRend.sprite = BeltSprites [0];
 		}
 		if (Input.GetKey (KeyCode.A)) {
-				gameObject.GetComponent<SpriteRenderer> ().sprite = Current [1];
+			gameObject.GetComponent<SpriteRenderer> ().sprite = Current [1];
+			BeltRend.sprite = BeltSprites [3];
 		}
 		if (Input.GetKey (KeyCode.S)) {
-				gameObject.GetComponent<SpriteRenderer> ().sprite = Current [2];
+			gameObject.GetComponent<SpriteRenderer> ().sprite = Current [2];
+			BeltRend.sprite = BeltSprites [1];
 		}
 		if (Input.GetKey (KeyCode.D)) {
-				gameObject.GetComponent<SpriteRenderer> ().sprite = Current [3];
+			gameObject.GetComponent<SpriteRenderer> ().sprite = Current [3];
+			BeltRend.sprite = BeltSprites [2];
 		}
 	}
 }
