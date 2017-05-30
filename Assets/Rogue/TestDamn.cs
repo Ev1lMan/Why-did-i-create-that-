@@ -6,7 +6,8 @@ public class TestDamn : Wearable {
 
 	// Use this for initialization
 	void Start () {
-		TestVar = 1337;
+		InvSlot = 3;
+		InInv = false;
 		
 	}
 	

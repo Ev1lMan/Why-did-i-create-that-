@@ -5,8 +5,9 @@ using UnityEngine;
 public class Glasses : Wearable {
 	//Тут что-то будет
 
-	void OnStart(){
-		TestVar = 3333333;
+	void Start(){
+		InvSlot = 1;
+		InInv = false;
 	}
 
 	void Update () {

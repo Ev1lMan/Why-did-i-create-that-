@@ -131,25 +131,19 @@ public class Player : Actor {
 			if (_handInUse == null) {
 				if (_rayhit.collider.gameObject.CompareTag ("Pickups")) {
 					if (_handInUse == null){
-						if(_rayhit.collider.transform.parent == null){
-							print("Clear to proceed");
+						//Проверяем, находится ли объект уже в инвентаре. Честно говоря, мне не очень нравится такой подход. Наверное существует другой способ проверки. Стоило бы узнать что делает gameobject.GetType().GetNestedType()
+						if(_rayhit.collider.gameObject.GetComponent<Wearable>().InInv == false){
+							ToHands (_rayhit.collider.gameObject);
 
 						}else{
-							print (_rayhit.collider.gameObject.transform.parent);
+							ToHands (_rayhit.collider.gameObject);
+							Inventory.clearInventory (_handInUse); //Тут видимо проблема, в функцию отправляется Null
+
 						}
-						ToHands (_rayhit.collider.gameObject);
-
-
-
 					} else {
 						print ("No way");
 					}
-
-				
-				
 				}
-			
-			
 			} else {
 				//А тут если в руке что-то есть
 				//Тут будет отправка данных о персонаже? и предмете, который был в руке. Дальше это будет обрабатываться предметом. Например: если использовать отвёртку на двери, то откручивается крышечка обслуживания
@@ -176,7 +170,6 @@ public class Player : Actor {
 
 		if (Input.GetMouseButtonDown (1) && _rayhit.collider !=null) {
 			//print (_rayhit.collider);
-			print (_rayhit.collider.gameObject.GetComponent<Wearable>().TestVar);
 
 			//print ();
 			//print (Dbg);

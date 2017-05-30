@@ -25,16 +25,18 @@ public class Inventory : MonoBehaviour {
 		return 1;
 	}
 
-	/*public int clearInventory (GameObject _item){
-		GameObject _Dinv;
-		_Dinv = GetType().GetField(_item.ToString()).getv
+	public int clearInventory (GameObject _item){
+		print (_item); //Сюда не доходит, проверить в Player.cs
+
+
 		return 1;
-	}*/
+	}
 
 	public int toInventory(GameObject _item, GameObject _invSlot){
 		//Пояс
 		if (_invSlot == Interface.BeltUI && _item.GetComponent<Belt>()) {
 			BeltSprites = _item.GetComponent<Belt> ().ItemSprites; 
+			_item.GetComponent<Wearable> ().InInv = true;
 			SpriteChange.BeltSprites = BeltSprites; //Отправляем массив с текущими спрайтами для отрисовки в СпрайтЧейнджер
 			//_item.transform.SetPositionAndRotation (Interface.BeltUI.transform.position +Vector3.back, Quaternion.identity); //Заметка - Все объекты, которые помещяются в слоты интвентаря перемещаются ближе к камере
 			//_item.transform.SetParent (Interface.BeltUI.transform);
