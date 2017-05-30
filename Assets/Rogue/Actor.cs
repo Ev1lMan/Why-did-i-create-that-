@@ -5,9 +5,11 @@ public class Actor : MonoBehaviour {
 
 	public AudioClip[] StepSound = new AudioClip[10];
 	public bool stepping = false;
-	public float WaitTime =0.0f;
+	public float WaitTime;
 	public string Description; //Ну тут кароч чо - опять ооп, каждый будет генерировать своё описание и позже записывать это значение для своего класса
 	public int Move(int Dir, int Speed){	//Движения, ЭТА ЖИ БЛЯТЬ ООП, ДРУГИМ МОБАМ ВПИСЫВАТЬ ЭТО НЕ НАДО УЖЕЕЕЕЕ ЕЕЕЕЕЕААААА
+
+		WaitTime = 0.2f;
 		Update();
 			this.GetComponent<Rigidbody2D> ().freezeRotation = true;
 			if (Dir == 2) {
@@ -50,7 +52,6 @@ public class Actor : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!stepping) {
-			WaitTime = 0.2f;
 			StartCoroutine (footfall ());
 		}
 	}
