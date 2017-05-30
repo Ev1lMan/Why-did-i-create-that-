@@ -7,7 +7,8 @@ using UnityEngine;
 //Новая технология поъехала - корутина, но я как-то не оч. СУКА ЗАЕБАЛСЯ Я
 public class Door : MonoBehaviour {
 	//Разобраться с этим месивом
-	public AudioClip OpenSound;// Хуйня со звуком
+	public AudioClip OpenSound;
+	public AudioClip CloseSound;// Хуйня со звуком
 	public GameObject DoorConsole; //Не важно блять
 	public bool IsOpen;
 	public bool toOpen;
@@ -20,13 +21,14 @@ public class Door : MonoBehaviour {
 	public BoxCollider2D[] DoorColl = new BoxCollider2D[3]; //Коллайдер двери, иначе не пройдёшь, но если убрать коллайдер, то нельзя будет кликнуть;
 	public bool OnClick()
 	{
-		GetComponent<AudioSource>().PlayOneShot (OpenSound); // для проигрования хурмы(звука)
 		if (IsOpen) {
 			toClose = true;
 			toOpen = false;
+			GetComponent<AudioSource>().PlayOneShot (CloseSound);// для проигрования хурмы(звука)
 		} else {
 			toClose = false;
 			toOpen = true;
+			GetComponent<AudioSource>().PlayOneShot (OpenSound);// для проигрования хурмы(звука)
 		}
 		return true;
 	}
