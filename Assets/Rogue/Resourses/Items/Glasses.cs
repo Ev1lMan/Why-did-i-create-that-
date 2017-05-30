@@ -5,5 +5,13 @@ using UnityEngine;
 public class Glasses : Wearable {
 	//Тут что-то будет
 
+	void OnStart(){
+		TestVar = 3333333;
+	}
+
+	void Update () {
+
+	}
+
 	
 }

@@ -175,9 +175,10 @@ public class Player : Actor {
 		} 
 
 		if (Input.GetMouseButtonDown (1) && _rayhit.collider !=null) {
-			print (_rayhit.collider);
-			print (_rayhit.collider.gameObject.GetComponent(typeof(Wearable)));
-			//Component Dbg = _rayhit.collider.gameObject.GetComponent(typeof(Belt)) as Items;
+			//print (_rayhit.collider);
+			print (_rayhit.collider.gameObject.GetComponent<Wearable>().TestVar);
+
+			//print ();
 			//print (Dbg);
 		}
 	}
