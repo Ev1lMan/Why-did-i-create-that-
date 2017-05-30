@@ -18,18 +18,34 @@ public class Inventory : MonoBehaviour {
 	public Player Player;
 	public Sprite[] BeltSprites = new Sprite[4]; //Текущие спрайты для маски пояса
 
+	private int SetPosPar(GameObject _item, GameObject _invSlot){
+		_item.transform.SetPositionAndRotation (_invSlot.transform.position + Vector3.back, Quaternion.identity);
+		_item.transform.SetParent (_invSlot.transform);
+		return 1;
+	}
+
 	public int toInventory(GameObject _item, GameObject _invSlot){
+		//Пояс
 		if (_invSlot == Interface.BeltUI && _item.GetComponent<Belt>()) {
 			BeltSprites = _item.GetComponent<Belt> ().ItemSprites; 
 			SpriteChange.BeltSprites = BeltSprites; //Отправляем массив с текущими спрайтами для отрисовки в СпрайтЧейнджер
-			_item.transform.SetPositionAndRotation (Interface.BeltUI.transform.position +Vector3.back, Quaternion.identity); //Заметка - Все объекты, которые помещяются в слоты интвентаря перемещаются ближе к камере
-			_item.transform.SetParent (Interface.BeltUI.transform);
+			//_item.transform.SetPositionAndRotation (Interface.BeltUI.transform.position +Vector3.back, Quaternion.identity); //Заметка - Все объекты, которые помещяются в слоты интвентаря перемещаются ближе к камере
+			//_item.transform.SetParent (Interface.BeltUI.transform);
+			SetPosPar(_item,_invSlot);
 			Belt = _item;
 			Player.ClearHand (Player.ActiveHand);
+			}
 
-		} else {
-			print ("No");
+		if (_invSlot == Interface.GlassesUI && _item.GetComponent<Glasses> ()) {
+			SpriteChange.GlassesSprite = _item.GetComponent<Glasses> ().ItemSprites;
+			//_item.transform.SetPositionAndRotation (Interface.GlassesUI.transform.position +Vector3.back, Quaternion.identity);
+			//_item.transform.SetParent (Interface.GlassesUI.transform);
+			SetPosPar(_item,_invSlot);
+			Glasses = _item;
+			Player.ClearHand (Player.ActiveHand);
 		}
+			
+
 
 
 		return 1;
@@ -41,6 +57,13 @@ public class Inventory : MonoBehaviour {
 		SpriteChange = this.GetComponent<Spritechange> ();
 
 	}
+	void Update(){
+	
+	
+	
+	}
+
+		
 
 
 

@@ -18,7 +18,9 @@ public class Spritechange : MonoBehaviour {
 	//! Для каждой маски приходится создавать новый игровой объект, ибо несклько SpriteRenderer'ов нельзя навесить на один объект !
 	//Работа с поясом. У каждого пояса свои спрайты по направлениям. 
 	public SpriteRenderer BeltRend;
+	public SpriteRenderer GlassesRend;
 	public Sprite[] BeltSprites = new Sprite[4];
+	public Sprite[] GlassesSprite = new Sprite[4];
 
 
 
@@ -35,7 +37,9 @@ public class Spritechange : MonoBehaviour {
 		} else {
 			Current = DebugSprite; //Ну а тут если не нашли
 		}
+		//Для масок
 		BeltRend = this.transform.Find ("BeltLayer").GetComponent<SpriteRenderer> (); //Находим объект, на котором висит SpriteRenderer для пояса
+		GlassesRend = this.transform.Find ("GlassesLayer").GetComponent<SpriteRenderer>();
 	}
 
 	void Update()  {
@@ -44,18 +48,22 @@ public class Spritechange : MonoBehaviour {
 		if (Input.GetKey (KeyCode.W)) {
 			gameObject.GetComponent<SpriteRenderer> ().sprite = Current [0];
 			BeltRend.sprite = BeltSprites [0];
+			GlassesRend.sprite = GlassesSprite [0];
 		}
 		if (Input.GetKey (KeyCode.A)) {
 			gameObject.GetComponent<SpriteRenderer> ().sprite = Current [1];
 			BeltRend.sprite = BeltSprites [3];
+			GlassesRend.sprite = GlassesSprite [3];
 		}
 		if (Input.GetKey (KeyCode.S)) {
 			gameObject.GetComponent<SpriteRenderer> ().sprite = Current [2];
 			BeltRend.sprite = BeltSprites [1];
+			GlassesRend.sprite = GlassesSprite [1];
 		}
 		if (Input.GetKey (KeyCode.D)) {
 			gameObject.GetComponent<SpriteRenderer> ().sprite = Current [3];
 			BeltRend.sprite = BeltSprites [2];
+			GlassesRend.sprite = GlassesSprite [2];
 		}
 	}
 }

@@ -130,12 +130,19 @@ public class Player : Actor {
 			//Проверяем есть ли что-нибудь в руке. Если нет, то преносим персонажу
 			if (_handInUse == null) {
 				if (_rayhit.collider.gameObject.CompareTag ("Pickups")) {
-					if (_handInUse == null) {
+					if (_handInUse == null){
 						ToHands (_rayhit.collider.gameObject);
+
+
 					} else {
 						print ("No way");
-					}	
+					}
+
+				
+				
 				}
+			
+			
 			} else {
 				//А тут если в руке что-то есть
 				//Тут будет отправка данных о персонаже? и предмете, который был в руке. Дальше это будет обрабатываться предметом. Например: если использовать отвёртку на двери, то откручивается крышечка обслуживания
@@ -159,5 +166,9 @@ public class Player : Actor {
 
 			}
 		} 
+
+		if (Input.GetMouseButtonDown (1)) {
+			print (_rayhit.collider);
+		}
 	}
 }
