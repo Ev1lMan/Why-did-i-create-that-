@@ -3,17 +3,13 @@ using System.Collections;
 
 public class Actor : MonoBehaviour {
 
-	public AudioClip StepSound;
+	public AudioClip[] StepSound = new AudioClip[10];
 	public bool stepping = false;
 	public float WaitTime =0.0f;
 	public string Description; //Ну тут кароч чо - опять ооп, каждый будет генерировать своё описание и позже записывать это значение для своего класса
 	public int Move(int Dir, int Speed){	//Движения, ЭТА ЖИ БЛЯТЬ ООП, ДРУГИМ МОБАМ ВПИСЫВАТЬ ЭТО НЕ НАДО УЖЕЕЕЕЕ ЕЕЕЕЕЕААААА
-
-		if (!stepping) {
-
+		Update();
 			this.GetComponent<Rigidbody2D> ().freezeRotation = true;
-			WaitTime = 0.3f;
-			StartCoroutine(footfall());
 			if (Dir == 2) {
 				//this.transform.Translate (Vector2.up * Speed * Time.deltaTime);
 				this.GetComponent<Rigidbody2D> ().AddForce (Vector2.up * 10);
@@ -30,7 +26,6 @@ public class Actor : MonoBehaviour {
 				//this.transform.Translate (Vector2.down * Speed * Time.deltaTime);
 				this.GetComponent<Rigidbody2D> ().AddForce (Vector2.down * 10);
 			}
-		}
 		return 1;
 	}
 
@@ -38,7 +33,7 @@ public class Actor : MonoBehaviour {
 	IEnumerator footfall() //ХУЙНЯ С ЕЛДАКОМ БЛЯТЬ
 	{
 			stepping = true;
-			this.GetComponent<AudioSource>().PlayOneShot (StepSound);
+		this.GetComponent<AudioSource>().PlayOneShot (StepSound[Random.Range(0,StepSound.Length)]);
 			yield return new WaitForSeconds (WaitTime);
 			stepping = false;
 	}
@@ -54,7 +49,10 @@ public class Actor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (!stepping) {
+			WaitTime = 0.2f;
+			StartCoroutine (footfall ());
+		}
 	}
 
 
