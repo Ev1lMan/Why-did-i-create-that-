@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour {
 	//p.s. Иногда мне кажется, что на комментарии я трачу больше сил и времени, чем на кодинг :p
 	//Должен ли этот класс наследовать класс игрока? А вообще его бы пихнуть в класс Actor, ибо у всех будет инвентарь, хотя отдельно удобнее.
 	//-----Слоты персонажа
+	public GameObject[] InvSlots = new GameObject[2];
 	public GameObject LHand, RHand; //Это наверное вряд ли нужно, хотя всё можно сюда перенести;
 	public GameObject Pocket1, Pocket2;
 	public GameObject Center;
@@ -55,16 +56,12 @@ public class Inventory : MonoBehaviour {
 		Interface = this.GetComponent<Interface> ();
 		Player = this.GetComponent<Player> ();
 		SpriteChange = this.GetComponent<Spritechange> ();
+		InvSlots [0] = Belt;
+		InvSlots [1] = Glasses;
+
 
 	}
 	void Update(){
 	
-	
-	
 	}
-
-		
-
-
-
 }

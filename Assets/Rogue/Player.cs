@@ -131,7 +131,13 @@ public class Player : Actor {
 			if (_handInUse == null) {
 				if (_rayhit.collider.gameObject.CompareTag ("Pickups")) {
 					if (_handInUse == null){
+						//if(_rayhit.transform.parent.CompareTag("UI")){
+						//	print("Picked from UI");
+						//}else{
+						//	print("Clear to proceed");
+						//}
 						ToHands (_rayhit.collider.gameObject);
+
 
 
 					} else {
