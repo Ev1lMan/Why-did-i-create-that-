@@ -25,6 +25,12 @@ public class Inventory : MonoBehaviour {
 		return 1;
 	}
 
+	/*public int clearInventory (GameObject _item){
+		GameObject _Dinv;
+		_Dinv = GetType().GetField(_item.ToString()).getv
+		return 1;
+	}*/
+
 	public int toInventory(GameObject _item, GameObject _invSlot){
 		//Пояс
 		if (_invSlot == Interface.BeltUI && _item.GetComponent<Belt>()) {

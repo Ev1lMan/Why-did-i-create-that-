@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Belt : Wearable {
-	//private string ClothType = "Belt";
+	public string WearingSlot = "Belt";
+
 
 }
