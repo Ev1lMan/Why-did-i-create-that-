@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pistol : MonoBehaviour {
+public class Pistol : MonoBehaviour, Items {
 	//Ну это то ещё говнище, в отличие от интерактивных объедков, эти должны браться в руки, а потом уже там использоваться;
 	//Вообще тут должен быть классъ для pickableльных объедков - ну так, на всякий, может ещё забуду после армии.
 

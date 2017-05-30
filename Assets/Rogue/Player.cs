@@ -131,11 +131,12 @@ public class Player : Actor {
 			if (_handInUse == null) {
 				if (_rayhit.collider.gameObject.CompareTag ("Pickups")) {
 					if (_handInUse == null){
-						//if(_rayhit.transform.parent.CompareTag("UI")){
-						//	print("Picked from UI");
-						//}else{
-						//	print("Clear to proceed");
-						//}
+						if(_rayhit.collider.transform.parent == null){
+							print("Clear to proceed");
+
+						}else{
+							print (_rayhit.collider.gameObject.transform.parent);
+						}
 						ToHands (_rayhit.collider.gameObject);
 
 
@@ -173,8 +174,10 @@ public class Player : Actor {
 			}
 		} 
 
-		if (Input.GetMouseButtonDown (1)) {
+		if (Input.GetMouseButtonDown (1) && _rayhit.collider !=null) {
 			print (_rayhit.collider);
+			//print (_rayhit.collider.gameObject.GetType().GetField("ClothType").GetValue(_rayhit.collider.gameObject.GetComponent(typeof(Items)) as Items));
+			print(_rayhit.collider.gameObject.GetType().GetField("Cloth Type"));
 		}
 	}
 }
