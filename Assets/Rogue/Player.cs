@@ -125,25 +125,41 @@ public class Player : Actor {
 //Загляни в интерфейс, это тот ещё пиздец
 //У всех объектов, которые могут быть использованны, будет функция OnClick(). Наверное так будет удобно(если нет, предложи свой вариант). Через эту функцию будет реализовыватся алгоритм работы этого объекта
 //Фунция вызывается через SendMessage("имя функции - OnClick()")
+
 		RaycastHit2D _rayhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.forward, Mathf.Infinity);
 		if (Input.GetMouseButtonDown (0) && _rayhit.collider != null) {
 			//Проверяем есть ли что-нибудь в руке. Если нет, то преносим персонажу
 			if (_handInUse == null) {
 				if (_rayhit.collider.gameObject.CompareTag ("Pickups")) {
-					if (_handInUse == null){
-						//Проверяем, находится ли объект уже в инвентаре. Честно говоря, мне не очень нравится такой подход. Наверное существует другой способ проверки. Стоило бы узнать что делает gameobject.GetType().GetNestedType()
-						if(_rayhit.collider.gameObject.GetComponent<Wearable>().InInv == false){
+					if (_rayhit.collider.gameObject.GetComponent<Wearable> () != null) { //Проверяем на наличие скрипта объектов Wearable
+						if (_rayhit.collider.gameObject.GetComponent<Wearable> ().InInv == false) {
 							ToHands (_rayhit.collider.gameObject);
-
-						}else{
-							ToHands (_rayhit.collider.gameObject);
-							Inventory.clearInventory (_handInUse); //Тут видимо проблема, в функцию отправляется Null
-
+							print ("Picked up Wearable class object");
 						}
+						if (_rayhit.collider.gameObject.GetComponent<Wearable> ().InInv == true) {
+							ToHands (_rayhit.collider.gameObject);
+							Inventory.clearInventory (_rayhit.collider.gameObject);
+							print ("Picked up object from inventory and cleared out inventory slots");
+						}
+					
+					} else if (_rayhit.collider.gameObject.GetComponent<Wearable> () == null) { //Вообще это временное решение
+						ToHands (_rayhit.collider.gameObject);
+						print ("Picked up an object without Wearable class");
 					} else {
-						print ("No way");
+						print ("No way to pick up " + _rayhit.collider.gameObject);
 					}
 				}
+						
+
+						
+						
+					
+				
+					
+
+			
+			
+			
 			} else {
 				//А тут если в руке что-то есть
 				//Тут будет отправка данных о персонаже? и предмете, который был в руке. Дальше это будет обрабатываться предметом. Например: если использовать отвёртку на двери, то откручивается крышечка обслуживания
@@ -169,10 +185,14 @@ public class Player : Actor {
 		} 
 
 		if (Input.GetMouseButtonDown (1) && _rayhit.collider !=null) {
-			//print (_rayhit.collider);
+			print (_rayhit.collider.gameObject.GetType().BaseType);
+			if (_rayhit.collider.gameObject.GetComponent<Wearable> ()) {
+				print (_rayhit.collider.gameObject.GetComponent<Wearable> ().InvSlot);
+			}
+			
 
-			//print ();
-			//print (Dbg);
+
+
 		}
 	}
 }

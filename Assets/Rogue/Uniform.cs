@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestDamn : Wearable {
+public class Uniform : Wearable {
 
 	// Use this for initialization
 	void Start () {
-		InvSlot = "HELM";
+		InvSlot = "UNIFORM";
 		InInv = false;
-
-
-			
+		
 	}
+
 }
